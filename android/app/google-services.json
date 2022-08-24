@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "287033317105",
+    "project_id": "beecrowed-task",
+    "storage_bucket": "beecrowed-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287033317105:android:4f6633f2aacaa50df93b50",
+        "android_client_info": {
+          "package_name": "com.example.beecrowd_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287033317105-gv01hkk9j3klm6v8v92j56k18or38l6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beecrowd_task",
+            "certificate_hash": "711aabb9c3be7219f427deeac1ee7d55464d19e9"
+          }
+        },
+        {
+          "client_id": "287033317105-24so7an63kjvqgce4nnhm65afj40m61t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEmyohump_c2qHjVmzJy7lY-3PRjhwEaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287033317105-24so7an63kjvqgce4nnhm65afj40m61t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

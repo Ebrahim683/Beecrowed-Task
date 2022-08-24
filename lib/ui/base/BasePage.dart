@@ -1,0 +1,92 @@
+import 'package:beecrowd_task/ui/base/alltask/AllTask.dart';
+import 'package:beecrowd_task/ui/base/home/HomePage.dart';
+import 'package:beecrowd_task/ui/base/profile/ProfilePage.dart';
+import 'package:curved_navigation_rail/curved_navigation_rail.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class BasePage extends StatefulWidget {
+  BasePage({Key? key}) : super(key: key);
+
+  @override
+  State<BasePage> createState() => _BasePageState();
+}
+
+class _BasePageState extends State<BasePage> {
+  var selectedIndex = 0;
+  var _pages = [HomePage(), AllTaskPage(), ProfilePage()];
+
+  final List<NavigationRailDestination> destination = const [
+    NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
+    NavigationRailDestination(
+        icon: Icon(Icons.list_alt), label: Text('All Tasks')),
+    NavigationRailDestination(icon: Icon(Icons.person), label: Text('Profile')),
+  ];
+
+  appBarTitle(index) {
+    if (index == 0) {
+      return 'Home';
+    } else if (index == 1) {
+      return 'All Tasks';
+    } else if (index == 2) {
+      return 'Profile';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(appBarTitle(selectedIndex)),
+        backgroundColor: Colors.red[400],
+        automaticallyImplyLeading: false,
+        actions: [
+          //logout button
+          GestureDetector(
+            onTap: () {},
+            child: Padding(
+              padding: EdgeInsets.only(right: 10.w),
+              child: const Icon(Icons.logout),
+            ),
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: Row(
+          children: [
+            //navigation rail
+            NavigationRail(
+              backgroundColor: Colors.grey[900],
+              indicatorColor: Colors.red[400],
+              useIndicator: true,
+              selectedIconTheme: const IconThemeData(
+                color: Colors.yellow,
+              ),
+              unselectedIconTheme: const IconThemeData(
+                color: Colors.grey,
+              ),
+              labelType: NavigationRailLabelType.all,
+              selectedLabelTextStyle: const TextStyle(color: Colors.yellow),
+              unselectedLabelTextStyle: const TextStyle(
+                color: Colors.grey,
+              ),
+              destinations: destination,
+              selectedIndex: selectedIndex,
+              onDestinationSelected: (value) {
+                setState(() {
+                  selectedIndex = value;
+                });
+              },
+            ),
+            //pages
+            Expanded(
+              child: Container(
+                child: _pages[selectedIndex],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
