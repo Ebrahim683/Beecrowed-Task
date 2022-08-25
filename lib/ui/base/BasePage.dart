@@ -1,9 +1,11 @@
+import 'package:beecrowd_task/ui/auth/LoginPage.dart';
 import 'package:beecrowd_task/ui/base/alltask/AllTask.dart';
 import 'package:beecrowd_task/ui/base/home/HomePage.dart';
 import 'package:beecrowd_task/ui/base/profile/ProfilePage.dart';
-import 'package:curved_navigation_rail/curved_navigation_rail.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class BasePage extends StatefulWidget {
   BasePage({Key? key}) : super(key: key);
@@ -15,6 +17,8 @@ class BasePage extends StatefulWidget {
 class _BasePageState extends State<BasePage> {
   var selectedIndex = 0;
   var _pages = [HomePage(), AllTaskPage(), ProfilePage()];
+
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   final List<NavigationRailDestination> destination = const [
     NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
@@ -33,6 +37,22 @@ class _BasePageState extends State<BasePage> {
     }
   }
 
+  logOut() async {
+    try {
+      await firebaseAuth.signOut();
+      Get.off(LoginPage());
+    } catch (e) {
+      print('logout: $e');
+      Get.snackbar('Error!!', '$e',
+          isDismissible: true,
+          backgroundColor: Colors.green,
+          margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+          colorText: Colors.white,
+          duration: const Duration(seconds: 4),
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +63,9 @@ class _BasePageState extends State<BasePage> {
         actions: [
           //logout button
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              logOut();
+            },
             child: Padding(
               padding: EdgeInsets.only(right: 10.w),
               child: const Icon(Icons.logout),
@@ -53,7 +75,7 @@ class _BasePageState extends State<BasePage> {
       ),
       body: SafeArea(
         child: Row(
-          children: [
+          children: <Widget>[
             //navigation rail
             NavigationRail(
               backgroundColor: Colors.grey[900],
