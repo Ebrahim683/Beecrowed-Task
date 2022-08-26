@@ -159,6 +159,7 @@ class _AdminPageState extends State<AdminPage> {
                     var problem = _problemController.text.trim();
                     var date = _dateController.text.trim();
                     if (taskNumber.isEmpty) {
+                      isLoading = false;
                       Get.snackbar('Error!!', 'Enter task number',
                           isDismissible: true,
                           backgroundColor: Colors.green,
@@ -168,6 +169,7 @@ class _AdminPageState extends State<AdminPage> {
                           duration: const Duration(seconds: 4),
                           snackPosition: SnackPosition.BOTTOM);
                     } else if (problem.isEmpty) {
+                      isLoading = false;
                       Get.snackbar('Error!!', 'Enter problem',
                           isDismissible: true,
                           backgroundColor: Colors.green,
@@ -177,6 +179,7 @@ class _AdminPageState extends State<AdminPage> {
                           duration: const Duration(seconds: 4),
                           snackPosition: SnackPosition.BOTTOM);
                     } else if (date.isEmpty) {
+                      isLoading = false;
                       Get.snackbar('Error!!', 'Enter date',
                           isDismissible: true,
                           backgroundColor: Colors.green,
@@ -194,7 +197,7 @@ class _AdminPageState extends State<AdminPage> {
                   child: isLoading == false
                       ? Padding(
                           padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                          child: const Text('Admin Login'),
+                          child: const Text('Add task'),
                         )
                       : Padding(
                           padding: EdgeInsets.only(top: 5.h, bottom: 5.h),

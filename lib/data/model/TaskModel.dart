@@ -7,7 +7,7 @@ class TaskModel {
       {required this.taskNumber, required this.problem, required this.date});
 
   Map<String, dynamic> addTaskAdmin() =>
-      {'taskNumber': taskNumber, 'problem': problem, 'date': date};
+      {'taskNumber': taskNumber, 'problem': problem, 'date': 'Date: $date'};
 
   Map<String, dynamic> addDoneTask() =>
       {'taskNumber': taskNumber, 'problem': problem};

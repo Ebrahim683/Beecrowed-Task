@@ -41,6 +41,13 @@ dependencies:
   firebase_auth: ^3.6.4
   firebase_core: ^1.21.0
   cloud_firestore: ^3.4.5
+  liquid_pull_to_refresh: ^3.0.1
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'images/coding.png'
 
 dev_dependencies:
   flutter_test:
